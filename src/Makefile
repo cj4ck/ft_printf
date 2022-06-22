@@ -6,13 +6,13 @@
 #    By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 16:10:12 by cjackows          #+#    #+#              #
-#    Updated: 2022/06/22 17:23:51 by cjackows         ###   ########.fr        #
+#    Updated: 2022/06/22 19:34:36 by cjackows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =libftprintf.a
 
-src = ex.c
+src = 
 
 USR_LIB = libft.a
 USR_LIB_PATH = ./libft
