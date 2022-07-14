@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 16:52:01 by cjackows          #+#    #+#             */
-/*   Updated: 2022/07/14 13:52:18 by cjackows         ###   ########.fr       */
+/*   Updated: 2022/07/14 14:41:23 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	format_check(va_list args, const char format_specifier)
 	return (par_index);
 }
 
-int ft_printf(char *str, ...)
+int ft_printf(const char *str, ...)
 {
 	va_list args;
 	int str_index;
@@ -52,7 +52,7 @@ int ft_printf(char *str, ...)
 	while (str[str_index])
 	{
 		if (str[str_index] == '%')
-			str_len += format_check(args, str[str_index + 1]);
+			str_len += format_check(args, str[str_index + 1])
 		else
 			str_len += write(1, &str[str_index], 1);
 	str_index++;
