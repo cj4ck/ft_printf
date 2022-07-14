@@ -6,27 +6,27 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 16:52:01 by cjackows          #+#    #+#             */
-/*   Updated: 2022/07/14 14:41:23 by cjackows         ###   ########.fr       */
+/*   Updated: 2022/07/14 15:38:56 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	format_check(va_list args, const char format_specifier)
+static int	format_check(va_list args, const char format_specifier)
 {
-	char value;
+	char c;
 	int	par_index;
 
 	par_index = 0;
-	value = va_arg(args,unsigned int);
 	if (format_specifier == 'c')
-		par_index += write(1, &value, 1);
-	// if (format_specifier == 's')
-	// 	par_index += string(va_arg(args, char *));
-	// if (*p == 's')
-	// 	// return (ft_str(va_arg(args, char *)));
-	// if (*p == 'd' || *p == 'i')
-	// 	// return (ft_decint(va_arg(args, int)));
+	{
+		c = va_arg(args, int);
+		return (par_index += write(1, &c, 1));
+	}
+	if (format_specifier == 's')
+		return (par_index += string(va_arg(args, char *)));
+	if (format_specifier == 'd' || format_specifier == 'i')
+		return (par_index += integer(va_arg(args, int)));
 	// if (*p == 'u')
 	// 	// return (ft_unsigned(va_arg(args, unsigned int)));
 	// if (*p == 'p')
@@ -36,8 +36,8 @@ int	format_check(va_list args, const char format_specifier)
 	// if (*p == 'X')
 	// 	// return (ft_hex(va_arg(args, unsigned int), 'X'));
 	if (format_specifier == '%')
-		par_index += write(1, &format_specifier, 1);
-	return (par_index);
+		return(par_index += write(1, &format_specifier, 1));
+	return (0);
 }
 
 int ft_printf(const char *str, ...)
@@ -52,7 +52,10 @@ int ft_printf(const char *str, ...)
 	while (str[str_index])
 	{
 		if (str[str_index] == '%')
-			str_len += format_check(args, str[str_index + 1])
+		{
+			str_len += format_check(args, str[str_index + 1]);
+			str_index++;
+		}
 		else
 			str_len += write(1, &str[str_index], 1);
 	str_index++;
@@ -61,14 +64,13 @@ int ft_printf(const char *str, ...)
 	return (str_len);
 }
 
-// int main()	
+// int	main()
 // {
-// char	c = '!';
-// char	s[] = "world!";
-// char	n[] = "\0";
+// 	int	ret;
+// 	int	d = 134;
 
-// /**
-//  * @brief Custom printf tester
-//  * 
-//  */
+// 	ret = //ft_printf("%c", 'c');
+// 	// ft_printf("Hello%s", "hello");
+// 	ft_printf("%d", d);
+// 	printf("\n%d\n", ret);
 // }

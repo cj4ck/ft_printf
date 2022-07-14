@@ -16,8 +16,11 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 
+// -- core.c --- 
 int ft_printf(const char *str, ...);
-int	format_check(va_list args, const char format_specifier);
-int	string(char * str);
+
+// -- utilities.c --
+int	string(char *str);
+int	integer(int	nb);
 
 #endif
