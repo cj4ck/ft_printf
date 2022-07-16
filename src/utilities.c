@@ -21,7 +21,7 @@ int	string(char *str)
 		return (write(1, "(null)", 6));
 	while(str[i])
 		write(1, &str[i++], 1);
-	return (i);
+	return(i);
 }
 
 int	integer(int	long nb)
@@ -29,14 +29,14 @@ int	integer(int	long nb)
 	int	converter;
 	static int	length;
 	static	int	minus;
-	static int count = 0;
-	count++;
+	// static int count = 0;
+
+	// count++;
 	length = 0;
 	minus = 0;
-	if (nb == 0 && count == 1)
-		return (write(1, "0", 1));
-	// ! later
-	else if (nb < 0)
+	// if (nb == 0 && count == 1)
+	// 	return (write(1, "0", 1));
+	if (nb < 0)
 	{
 		write(1, "-", 1);
 		nb = -nb;

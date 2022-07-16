@@ -16,6 +16,7 @@ static int	format_check(va_list args, const char format_specifier)
 {
 	char c;
 	int	par_index;
+	long int	num;
 
 	par_index = 0;
 	if (format_specifier == 'c')
@@ -26,7 +27,13 @@ static int	format_check(va_list args, const char format_specifier)
 	if (format_specifier == 's')
 		return (par_index += string(va_arg(args, char *)));
 	if (format_specifier == 'd' || format_specifier == 'i')
-		return (par_index += integer(va_arg(args, int)));
+	{
+		num = va_arg(args, int);
+		if (num == 0)
+			return (par_index += write(1, "0", 1));
+		else
+			return (par_index += integer(num));
+	}	
 	// if (*p == 'u')
 	// 	// return (ft_unsigned(va_arg(args, unsigned int)));
 	// if (*p == 'p')
