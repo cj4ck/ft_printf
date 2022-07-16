@@ -15,12 +15,13 @@
 
 # include "../libft/libft.h"
 # include <stdarg.h>
+# include <limits.h>
 
 // -- core.c --- 
 int ft_printf(const char *str, ...);
 
 // -- utilities.c --
 int	string(char *str);
-int	integer(int	nb);
+int	integer(int	long nb);
 
 #endif

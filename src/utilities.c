@@ -12,11 +12,6 @@
 
 #include "ft_printf.h"
 
-// int	string(char *str)
-// {
-// 	write(1, 'c', 1);
-// }
-
 int	string(char *str)
 {
 	int	i;
@@ -29,41 +24,31 @@ int	string(char *str)
 	return (i);
 }
 
-int	integer(int	nb)
+int	integer(int	long nb)
 {
-	// int	i;
-	int	l;
 	int	converter;
-	int	length;
-
-	l = nb;
+	static int	length;
+	static	int	minus;
+	static int count = 0;
+	count++;
 	length = 0;
-	if (l == 0)
-		length = 1;
-	else if (l < 0)
-	{
-		length++;
-		l = l * -1;
-	}
-	while (l > 0)
-	{
-		length++;
-		l = l / 10;
-	}
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (11);
-	}
-	if (nb < 0)
+	minus = 0;
+	if (nb == 0 && count == 1)
+		return (write(1, "0", 1));
+	// ! later
+	else if (nb < 0)
 	{
 		write(1, "-", 1);
 		nb = -nb;
+		integer(nb);
+		minus++;
 	}
-	if (nb > 9)
+	else if (nb != 0)
+	{
 		integer(nb / 10);
-	converter = nb % 10 + '0';
-	write(1, &converter,1);
-
-	return (length);
+		length++;
+		converter = nb % 10 + '0';
+		write(1, &converter, 1);
+	}
+	return (length + minus);
 }
