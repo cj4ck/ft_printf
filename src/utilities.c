@@ -29,13 +29,9 @@ int	integer(int	long nb)
 	int	converter;
 	static int	length;
 	static	int	minus;
-	// static int count = 0;
 
-	// count++;
 	length = 0;
 	minus = 0;
-	// if (nb == 0 && count == 1)
-	// 	return (write(1, "0", 1));
 	if (nb < 0)
 	{
 		write(1, "-", 1);
