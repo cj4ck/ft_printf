@@ -11,6 +11,10 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+int	ft_write(char c)
+{
+	return(write(1, &c, 1));
+}
 
 int	string(char *str)
 {
@@ -48,3 +52,36 @@ int	integer(int	long nb)
 	}
 	return (length + minus);
 }
+
+// static void	ft_convert(unsigned long x)
+// {
+// 	if (x <= 9)
+// 		ft_write(x + 48);
+// 	else if (x >= 10)
+// 		ft_write(x + 87);
+// }
+
+// static int	ft_p_hex(unsigned long x)
+// {
+// 	int	i;
+
+// 	i = 1;
+// 	if (x >= 16)
+// 		ft_p_hex(x / 16);
+// 	ft_convert(x % 16);
+// 	while (x >= 16)
+// 	{
+// 		x = x / 16;
+// 		i++;
+// 	}
+// 	return (i);
+// }
+
+// int	ft_pointer(void *p)
+// {
+// 	unsigned long	address;
+
+// 	address = (unsigned long)p;
+// 	write(1, "0x", 2);
+// 	return (2 + ft_p_hex(address));
+// }

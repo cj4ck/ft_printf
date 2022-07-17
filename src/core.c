@@ -24,8 +24,8 @@ static int	format_check(va_list args, const char format_specifier)
 	}
 	if (format_specifier == 's')
 		return (string(va_arg(args, char *)));
-	// if (format_specifier == 'p')
-	// 	// return (ft_pointer(va_arg(args, void *)));
+	if (format_specifier == 'p')
+		return (ft_pointer(va_arg(args, void *)));
 	if (format_specifier == 'd' || format_specifier == 'i')
 	{
 		num = va_arg(args, int);

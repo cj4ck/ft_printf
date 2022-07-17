@@ -23,5 +23,10 @@ int ft_printf(const char *str, ...);
 // -- utilities.c --
 int	string(char *str);
 int	integer(int	long nb);
+int	ft_write(char c);
+
+int	ft_unsigned(unsigned int nb);
+int	ft_hex(unsigned int x, char c);
+int	ft_pointer(void *p);
 
 #endif
